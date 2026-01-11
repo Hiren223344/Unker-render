@@ -4,14 +4,13 @@ services:
     runtime: docker
     image:
       url: minio/minio:latest
+    startCommand: server /data --console-address ":9001"
     envVars:
       - key: MINIO_ROOT_USER
         value: unkey
       - key: MINIO_ROOT_PASSWORD
         value: unkey123
-    startCommand: server /data --console-address ":9001"
     plan: free
-    healthCheckPath: /
 
   - type: web
     name: unkey
@@ -36,6 +35,3 @@ services:
       - key: PORT
         value: "3000"
     plan: free
-    dependsOn:
-      - minio
-    healthCheckPath: /health
