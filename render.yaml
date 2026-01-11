@@ -4,7 +4,6 @@ services:
     runtime: docker
     image:
       url: minio/minio:latest
-    startCommand: server /data --console-address ":9001"
     envVars:
       - key: MINIO_ROOT_USER
         value: unkey
